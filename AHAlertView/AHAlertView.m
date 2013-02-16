@@ -440,6 +440,12 @@ typedef void (^AHAnimationBlock)();
 	
 	[self.alertWindow addSubview:self.dimView];
 	[self.alertWindow addSubview:self];
+    
+    // Add an observer for background notification so we can autodismiss.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
 
 	[self layoutIfNeeded];
 
@@ -462,6 +468,9 @@ typedef void (^AHAnimationBlock)();
 
 	// Force editing of any currently active text fields.
 	[self endEditing:YES];
+    
+    // Remove observer for auto dismissal.
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 
 	[self performDismissalAnimation];
 }
@@ -659,6 +668,16 @@ typedef void (^AHAnimationBlock)();
 	}
 
 	return CGPointZero;
+}
+
+- (void)applicationDidEnterBackground:(NSNotification *)notification
+{
+    if (self.cancelButton) {
+        AHAlertViewButtonBlock block = objc_getAssociatedObject(self.cancelButton, AHAlertViewButtonBlockKey);
+        if(block)
+            block();
+        [self dismissWithStyle:AHAlertViewDismissalStyleNone];
+    }
 }
 
 #pragma mark - Layout calculation methods
