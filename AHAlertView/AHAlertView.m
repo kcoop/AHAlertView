@@ -501,7 +501,7 @@ typedef void (^AHAnimationBlock)();
 
 		// While the alert view pops in, the background overlay fades in
 		CABasicAnimation *fadeInAnimation = [CABasicAnimation animation];
-		fadeInAnimation.duration = 0.3;
+		fadeInAnimation.duration = 0.2;
 		fadeInAnimation.fromValue = [NSNumber numberWithFloat:0];
 		fadeInAnimation.toValue = [NSNumber numberWithFloat:1];
 		[self.dimView.layer addAnimation:fadeInAnimation forKey:@"opacity"];
