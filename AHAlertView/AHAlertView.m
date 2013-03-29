@@ -41,7 +41,7 @@ static const NSInteger AHViewAutoresizingFlexibleSizeAndMargins =
 // important enough to expose via UIAppearance selectors. If you disagree with that
 // assessment, you can either tweak them here as your application requires, or you
 // can submit an issue or pull request to make layout behavior more flexible.
-static const CGFloat AHAlertViewDefaultWidth = 276;
+static const CGFloat AHAlertViewDefaultWidth = 320;
 static const CGFloat AHAlertViewMinimumHeight = 100;
 static const CGFloat AHAlertViewDefaultButtonHeight = 36;
 static const CGFloat AHAlertViewDefaultTextFieldHeight = 26;
@@ -50,7 +50,7 @@ static const CGFloat AHAlertViewMessageLabelBottomMargin = 16;
 static const CGFloat AHAlertViewTextFieldBottomMargin = 8;
 static const CGFloat AHAlertViewTextFieldLeading = -1;
 static const CGFloat AHAlertViewButtonBottomMargin = 4;
-static const CGFloat AHAlertViewButtonHorizontalSpacing = 4;
+static const CGFloat AHAlertViewButtonHorizontalSpacing = 12;
 
 // This function may not be completely general. Works well enough for our purposes here.
 static CGFloat CGAffineTransformGetAbsoluteRotationAngleDifference(CGAffineTransform t1, CGAffineTransform t2)
